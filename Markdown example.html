@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Getting started</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</head>
+
+<body>
+<p>This post examines the features of <a href="http://www.rstudio.org/docs/authoring/using_markdown">R Markdown</a> 
+using <a href="http://yihui.name/knitr/">knitr</a> in Rstudio 0.96.
+This combination of tools provides an exciting improvement in usability for 
+<a href="http://stats.stackexchange.com/a/15006/183">reproducible analysis</a>.
+Specifically, this post 
+(1) discusses getting started with R Markdown and <code>knitr</code> in  Rstudio 0.96;
+(2) provides a basic example of producing console output and plots using R Markdown;
+(3) highlights several code chunk options such as caching and controlling how input and output is displayed;
+(4) demonstrates use of standard Markdown notation as well as the extended features of formulas and tables; and 
+(5) discusses the implications of R Markdown.
+This post was produced with R Markdown. The source code is available here as a gist. 
+The post may be most useful if the source code and displayed post are viewed side by side. 
+In some instances, I include a copy of the R Markdown in the displayed HTML, but most of the time I assume you are reading the source and post side by side.</p>
+
+<!-- more -->
+
+<h2>Getting started</h2>
+
+<p>To work with R Markdown, if necessary:</p>
+
+<ul>
+<li>Install <a href="http://www.r-project.org/">R</a></li>
+<li>Install the lastest version of <a href="http://rstudio.org/download/">RStudio</a> (at time of posting, this is 0.96)</li>
+<li>Install the latest version of the <code>knitr</code> package: <code>install.packages(&quot;knitr&quot;)</code></li>
+</ul>
+
+<p>To run the basic working example that produced this blog post:</p>
+
+<ul>
+<li>Open R Studio, and go to File - New - R Markdown</li>
+<li>If necessary install <code>ggplot2</code> and <code>lattice</code> packages: <code>install.packages(&quot;ggplot2&quot;); install.packages(&quot;lattice&quot;)</code></li>
+<li>Paste in the contents of this gist (which contains the R Markdown file used to produce this post) and save the file with an <code>.rmd</code> extension</li>
+<li>Click Knit HTML</li>
+</ul>
+
+<h2>Prepare for analyses</h2>
+
+<pre><code class="r">set.seed(1234)
+library(ggplot2)
+library(lattice)
+</code></pre>
+
+<h2>Basic console output</h2>
+
+<p>To insert an R code chunk, you can type it manually or just press <code>Chunks - Insert chunks</code> or use the shortcut key. This will produce the following code chunk:</p>
+
+<p>Pressing tab when inside the braces will bring up code chunk options.</p>
+
+<p>The following R code chunk labelled <code>basicconsole</code> is as follows:</p>
+
+<pre><code>```r
+x &lt;- 1:10
+y &lt;- round(rnorm(10, x, 1), 2)
+df &lt;- data.frame(x, y)
+df
+```
+
+```
+##     x     y
+## 1   1 -0.21
+## 2   2  2.28
+## 3   3  4.08
+## 4   4  1.65
+## 5   5  5.43
+## 6   6  6.51
+## 7   7  6.43
+## 8   8  7.45
+## 9   9  8.44
+## 10 10  9.11
+```
+</code></pre>
+
+<p>The code chunk input and output is then displayed as follows:</p>
+
+<pre><code class="r">x &lt;- 1:10
+y &lt;- round(rnorm(10, x, 1), 2)
+df &lt;- data.frame(x, y)
+df
+</code></pre>
+
+<pre><code>##     x     y
+## 1   1  0.52
+## 2   2  1.00
+## 3   3  2.22
+## 4   4  4.06
+## 5   5  5.96
+## 6   6  5.89
+## 7   7  6.49
+## 8   8  7.09
+## 9   9  8.16
+## 10 10 12.42
+</code></pre>
+
+<h2>Plots</h2>
+
+<p>Images generated by <code>knitr</code> are saved in a figures folder. However, they also appear to be represented in the HTML output using a <a href="http://en.wikipedia.org/wiki/Data_URI_scheme">data URI scheme</a>. This means that you can paste the HTML into a blog post or discussion forum and you don&#39;t have to worry about finding a place to store the images; they&#39;re embedded in the HTML.</p>
+
+<h3>Simple plot</h3>
+
+<p>Here is a basic plot using base graphics:</p>
+
+<pre><code>```r
+plot(x)
+```
+
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
+</code></pre>
+
+<pre><code class="r">plot(x)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk simpleplot"/> </p>
+
+<p>Note that unlike traditional Sweave, there is no need to write <code>fig=TRUE</code>.</p>
+
+<h3>Multiple plots</h3>
+
+<p>Also, unlike traditional Sweave, you can include multiple plots in one code chunk:</p>
+
+<pre><code>```r
+boxplot(1:10 ~ rep(1:2, 5))
+```
+
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-51.png) 
+
+```r
+plot(x, y)
+```
+
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-52.png) 
+</code></pre>
+
+<pre><code class="r">boxplot(1:10 ~ rep(1:2, 5))
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk multipleplots"/> </p>
+
+<pre><code class="r">plot(x, y)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk multipleplots"/> </p>
+
+<h3><code>ggplot2</code> plot</h3>
+
+<p>Ggplot2 plots work well:</p>
+
+<pre><code class="r">qplot(x, y, data = df)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk ggplot2ex"/> </p>
+
+<h3><code>lattice</code> plot</h3>
+
+<p>As do lattice plots:</p>
+
+<pre><code class="r">xyplot(y ~ x)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk latticeex"/> </p>
+
+<p>Note that unlike traditional Sweave, there is no need to print lattice plots directly.</p>
+
+<h2>R Code chunk features</h2>
+
+<h3>Create Markdown code from R</h3>
+
+<p>The following code hides the command input (i.e., <code>echo=FALSE</code>), and outputs the content directly as code (i.e., <code>results=asis</code>, which is similar to <code>results=tex</code> in Sweave).</p>
+
+<pre><code>Here are some dot points
+
+* The value of y[1] is 0.52
+* The value of y[2] is 1
+* The value of y[3] is 2.22
+</code></pre>
+
+<p>Here are some dot points</p>
+
+<ul>
+<li>The value of y[1] is 0.52</li>
+<li>The value of y[2] is 1</li>
+<li>The value of y[3] is 2.22</li>
+</ul>
+
+<h3>Create Markdown table code from R</h3>
+
+<table><thead>
+<tr>
+<th>x</th>
+<th>y</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>0.52</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2.22</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4.06</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5.96</td>
+</tr>
+<tr>
+<td>6</td>
+<td>5.89</td>
+</tr>
+<tr>
+<td>7</td>
+<td>6.49</td>
+</tr>
+<tr>
+<td>8</td>
+<td>7.09</td>
+</tr>
+<tr>
+<td>9</td>
+<td>8.16</td>
+</tr>
+<tr>
+<td>10</td>
+<td>12.42</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>x</th>
+<th>y</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>0.52</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2.22</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4.06</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5.96</td>
+</tr>
+<tr>
+<td>6</td>
+<td>5.89</td>
+</tr>
+<tr>
+<td>7</td>
+<td>6.49</td>
+</tr>
+<tr>
+<td>8</td>
+<td>7.09</td>
+</tr>
+<tr>
+<td>9</td>
+<td>8.16</td>
+</tr>
+<tr>
+<td>10</td>
+<td>12.42</td>
+</tr>
+</tbody></table>
+
+<h3>Control output display</h3>
+
+<p>The folllowing code supresses display of R input commands (i.e., <code>echo=FALSE</code>)
+and removes any preceding text from console output (<code>comment=&quot;&quot;</code>; the default is <code>comment=&quot;##&quot;</code>).</p>
+
+<pre><code>```
+  x    y
+1 1 0.52
+2 2 1.00
+3 3 2.22
+4 4 4.06
+5 5 5.96
+6 6 5.89
+```
+</code></pre>
+
+<pre><code>  x    y
+1 1 0.52
+2 2 1.00
+3 3 2.22
+4 4 4.06
+5 5 5.96
+6 6 5.89
+</code></pre>
+
+<h3>Control figure size</h3>
+
+<p>The following is an example of a smaller figure using <code>fig.width</code> and <code>fig.height</code> options.</p>
+
+<pre><code>```r
+plot(x)
+```
+
+![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10.png) 
+</code></pre>
+
+<pre><code class="r">plot(x)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+/t3fAAAAdVBMVEX9/v0AAAAAADkAAGUAOTkAOWUAOY8AZrU5AAA5ADk5AGU5OWU5OY85j9plAABlADllAGVlOQBlOY9lZmVltf2POQCPOTmPOWWPZgCPtY+P29qP2/21ZgC1/rW1/v3ajzna/tra/v39tWX924/9/rX9/tr9/v3yOBwfAAAAJ3RSTlP//////////////////////////////////////////////////wCDVpfZAAAACXBIWXMAAAsSAAALEgHS3X78AAAEIElEQVR4nO2di1LbMBBF6/RBSpMUWoc+4uLi1/9/Yr0mzCSx5JdWtq96zwwDg2HlE2kVIrHKuypQ3i19A76gGBoUQ4NiaFAMDYqhQTE0KIYGxdCgGBoUQ4NiaFAMDYqhQTE0KIYGxdCgGBoUQ4NiaFAMDYqhQTE0KIYGxdCgGBoUQ4NiaPSL5dtIeP88w90o0itWHuPmc/bpxfvNaNIrVjw8X31GwaXHomVxFKuKgy3HekL7o7FyFuuI7/C7LkTNhwexgYPBG97ELhtYgmDFdHLsPHeYZo/FxIa03t9j5XE/LbRn3Idi8fU0KbRnAsmx9hwchljUbo5i01qbiWDFgs2x8a1TbHxoz1BMPbQjfS+LUMUME/yo1lf7QnMJsYGh3QhWLNgcc22dYuNDewZJbNRECyTWOxGOaZ1i40NPihekWLA5pto6xcaH9gzFbOTbuDxGkWFvXUNs+osfVzHZg07i2m/X3oOeeEs3ISaGcd5Gengun05X/zWg+EJzQTHprmxfVdnd2NBD8C1WfJNxVv4w/itH0vRO2wsix/LtXZVsLPtgE0N7ZuhQzKJYObRn/u8e68yxqaE9s76/PJQWJFcn5jDDj2mdYuNDd/xWkGLB5pgWFFMP7ZlViPnYS1uDmNZEOKb1WXY0UcQGhr7+wSDFgs0xL1BMPbRnKKYc2nshxUJiXmb4wa1XFBsdOlixYHPMPxRTD+0ZhR3NaHMyVtXehp63BlBjR1MqrfrF/E+EXa3fMrAOOrnr39EEEzvXQacf7gPrsao4NBV/aX8pI1aOTQ/tGYqph/YMxSaFXq4u36/YzDP8TeudUMwYOlixUHNsWfyJtU1nujJk+FNsCBRzvEIxLSjmeGV2sTVBMTQohgbF0KAYGhTrRc4TtpXHvJ3w2v5+ZKk7qaNZTibOZXekOJhKEC9RE5Mz/fLPluqY1KIstWnGG5RoqfFKJsLyQKWGwq8L1MSawrnEfP/5l0fjBfvZw1I4abyabH7VPSaX8va+1iWqOWY5ibF8+m0eivnup2Uo2nusEWq8bcc+vqIpZjs7M91bcizfxqaiVsGeRCIm43c+sfMOYftOdi82MesDL9mamWeP2XtMHn4jabMKaJKWsjXz/XV0ST5zjlm9BNt0n9iGYk+PyaCfa1Z87ReLnE2sziTLs1UWWZ/hZn4eWxsUQ4NiaFAMDYqhQTE0KIYGxdCgGBoUQ4NiClwvmNkWeJSgmAK1mKzWyxpdcYg+Psbn5bekd5FwAnOLbffNKm/tIofNvSoVD3/03/JxbrH7Zm1alqjroSiL2PJlalwAd2MZsSbbkrh507ZNx4ahA8v22HkEJt/VU2whsYscqzMu3/19Uu+yhcTK49usuDnJvK//Trj8ywMNiqFBMTQohgbF0KAYGhRDg2JoUAyNf42UkKKBd865AAAAAElFTkSuQmCC" alt="plot of chunk smallplot"/> </p>
+
+<h3>Cache analysis</h3>
+
+<p>Caching analyses is straightforward.
+Here&#39;s example code. 
+On the first run on my computer, this took about 10 seconds.
+On subsequent runs, this code was not run. </p>
+
+<p>If you want to rerun cached code chunks, just <a href="http://stackoverflow.com/a/10629121/180892">delete the contents of the <code>cache</code> folder</a></p>
+
+<pre><code>```r
+for (i in 1:5000) {
+    lm((i + 1) ~ i)
+}
+```
+</code></pre>
+
+<h2>Basic markdown functionality</h2>
+
+<p>For those not familiar with standard <a href="http://daringfireball.net/projects/markdown/">Markdown</a>, the following may be useful.
+See the source code for how to produce such points. However, RStudio does include a Markdown quick reference button that adequatly covers this material.</p>
+
+<h3>Dot Points</h3>
+
+<p>Simple dot points:</p>
+
+<ul>
+<li>Point 1</li>
+<li>Point 2</li>
+<li>Point 3</li>
+</ul>
+
+<p>and numeric dot points:</p>
+
+<ol>
+<li>Number 1</li>
+<li>Number 2</li>
+<li>Number 3</li>
+</ol>
+
+<p>and nested dot points:</p>
+
+<ul>
+<li>A
+
+<ul>
+<li>A.1</li>
+<li>A.2</li>
+</ul></li>
+<li>B
+
+<ul>
+<li>B.1</li>
+<li>B.2</li>
+</ul></li>
+</ul>
+
+<h3>Equations</h3>
+
+<p>Equations are included by using LaTeX notation and including them either between single dollar signs (inline equations) or double dollar signs (displayed equations).
+If you hang around the Q&amp;A site <a href="http://stats.stackexchange.com">CrossValidated</a> you&#39;ll be familiar with this idea.</p>
+
+<p>There are inline equations such as \( y_i = \alpha + \beta x_i + e_i \).</p>
+
+<p>And displayed formulas:</p>
+
+<p>\[ \frac{1}{1+\exp(-x)} \]</p>
+
+<p>knitr provides self-contained HTML code that calls a Mathjax script to display formulas.
+However, in order to include the script in my blog posts I <a href="https://gist.github.com/2716053">took the script</a> and incorporated it into my blogger template.
+If you are viewing this post through syndication or an RSS reader, this may not work.
+You may need to view this post on my website. </p>
+
+<h3>Tables</h3>
+
+<p>Tables can be included using the following notation</p>
+
+<table><thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Male</td>
+<td>Blue</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Female</td>
+<td>Pink</td>
+</tr>
+</tbody></table>
+
+<h3>Hyperlinks</h3>
+
+<ul>
+<li>If you like this post, you may wish to subscribe to <a href="http://feeds.feedburner.com/jeromyanglim">my RSS feed</a>.</li>
+</ul>
+
+<h3>Images</h3>
+
+<p>Here&#39;s an example image:</p>
+
+<p><img src="http://i.imgur.com/RVNmr.jpg" alt="image from redmond barry building unimelb"/></p>
+
+<h3>Code</h3>
+
+<p>Here is Markdown R code chunk displayed as code:</p>
+
+<pre><code>```r
+x &lt;- 1:10
+x
+```
+
+```
+##  [1]  1  2  3  4  5  6  7  8  9 10
+```
+</code></pre>
+
+<p>And then there&#39;s inline code such as <code>x &lt;- 1:10</code>.</p>
+
+<h3>Quote</h3>
+
+<p>Let&#39;s quote some stuff:</p>
+
+<blockquote>
+<p>To be, or not to be, that is the question:
+Whether &#39;tis nobler in the mind to suffer
+The slings and arrows of outrageous fortune,</p>
+</blockquote>
+
+<h2>Conclusion</h2>
+
+<ul>
+<li>R Markdown is awesome. 
+
+<ul>
+<li>The ratio of markup to content is excellent. </li>
+<li>For exploratory analyses, blog posts, and the like R Markdown will be a powerful productivity booster. </li>
+<li>For journal articles, LaTeX will presumably still be required.</li>
+</ul></li>
+<li>The RStudio team have made the whole process very user friendly.
+
+<ul>
+<li>RStudio provides useful shortcut keys for compiling to HTML, and running code chunks. These shortcut keys are presented in a clear way.</li>
+<li>The incorporated extensions to Markdown, particularly formula and table support, are particularly useful.</li>
+<li>Jump-to-chunk feature facilitates navigation. It helps if your code chunks have informative names.</li>
+<li>Code completion on R code chunk options is really helpful. See also <a href="http://yihui.name/knitr/options">chunk options documentation on the knitr website</a>.</li>
+</ul></li>
+<li>Other recent posts on R markdown include those by :
+
+<ul>
+<li><a href="http://christophergandrud.blogspot.com.au/2012/05/dynamic-content-with-rstudio-markdown.html">Christopher Gandrud</a></li>
+<li><a href="http://lamages.blogspot.com.au/2012/05/interactive-reports-in-r-with-knitr-and.html">Markcus Gesmann</a></li>
+<li><a href="http://rstudio.org/docs/authoring/using_markdown">Rstudio on R Markdown</a></li>
+<li><a href="http://yihui.name/knitr/">Yihui Xie</a>: I really want to thank him for developing <code>knitr</code>. 
+He has also posted <a href="https://github.com/yihui/knitr/blob/master/inst/examples/knitr-minimal.Rmd">this example of R Markdown</a>.</li>
+</ul></li>
+</ul>
+
+<h2>Questions</h2>
+
+<p>The following are a few questions I encountered along the way that might interest others.</p>
+
+<h3>Annoying <code>&lt;br/&gt;</code>&#39;s</h3>
+
+<p><strong>Question:</strong> I asked on the Rstudio discussion site:
+<a href="http://support.rstudio.org/help/discussions/problems/2329-why-does-r-markdown-to-html-insert-br-when-there-is-a-new-line-of-text">Why does Markdown to HTML insert <code>&lt;br/&gt;</code> on new lines?</a></p>
+
+<p><strong>Answer:</strong> I just do a find and delete on this text for now.</p>
+
+<h3>Temporarily disable caching</h3>
+
+<p><strong>Question:</strong> I asked on StackOverflow about 
+<a href="http://stackoverflow.com/q/10628665/180892">How to set cache=FALSE for a knitr markdown document and override code chunk settings?</a></p>
+
+<p><strong>Answer:</strong>  Delete the cache folder. But there are other possible workflows.</p>
+
+<h3>Equivalent of Sexpr</h3>
+
+<p><strong>Question:</strong> I asked on Stack Overvlow about <a href="http://stackoverflow.com/q/10629416/180892">whether there an R Markdown equivalent to Sexpr in Sweave?</a>.</p>
+
+<p><strong>Answer:</strong> Include the code between brackets of &ldquo;backick r space&rdquo; and &ldquo;backtick&rdquo;. 
+E.g., in the source code I have calculated 2 + 2 = 4 .</p>
+
+</body>
+
+</html>
+
